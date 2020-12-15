@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Loader";
+}
+
+@using (Ajax.BeginForm("NewFile", "Tasks", new AjaxOptions { UpdateTargetId = "diskarea", LoadingElementId = "loadingfile", LoadingElementDuration = 100 }, new
+{
+    enctype = "multipart/form-data"@*@class =""*@ }))
+{
+    <input type="file" id="upload" name="upload" multiple="multiple" />
+    @*<button id="btnfile" value="Загрузить">Загрузить</button>*@
+    <input type="hidden" id="idtable" name="idtable" value="@Model.id">
+    <input type="hidden" id="typetable" name="typetable" value="1">
+    <input id="btnfile" type="submit" style="background-color:gray;  color:white" class="btn btn-primary" value="Загрузить" />
+    <br>
+    <img id="loadingfile" src="\Content\images\load.gif" style="display:none" />
+}
