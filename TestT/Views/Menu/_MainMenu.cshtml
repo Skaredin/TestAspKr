@@ -24,7 +24,7 @@
     var menuCatItem = db.Menu_Items_in_category.Where(x => x.id != null).OrderBy(i => i.Menu_Items.position);
 
     <ul class="nav navbar-nav">
-        @foreach (var menu in menuCategory.Where(x => x.RoleId == x.AspNetRole.Id))
+        @foreach (var menu in menuCategory.Where(x => x.RoleId == x.AspNetRoles.Id))
         {
             <li class="dropdown dp">
                 <a href="@menu.Menu_Category.url" class="dropdown-toggle" data-toggle="dropdown">@menu.Menu_Category.name</a>
