@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d7addbb460c440b1859f2b2917e63d18" Name="Diagram1">
+        <EntityTypeShape EntityType="TestAspModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TestAspModel.Accounts" Width="1.5" PointX="3" PointY="15.125" />
+        <EntityTypeShape EntityType="TestAspModel.Accounts_Roles" Width="1.5" PointX="8.25" PointY="14.75" />
+        <EntityTypeShape EntityType="TestAspModel.Accounts_RolesHB" Width="1.5" PointX="0.75" PointY="10.5" />
+        <EntityTypeShape EntityType="TestAspModel.Accounts_Users" Width="1.5" PointX="5.25" PointY="11" />
+        <EntityTypeShape EntityType="TestAspModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="TestAspModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="15.5" />
+        <EntityTypeShape EntityType="TestAspModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="18.25" />
+        <EntityTypeShape EntityType="TestAspModel.AspNetUsers" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="TestAspModel.Dolgnost" Width="1.5" PointX="7.75" PointY="8.5" />
+        <EntityTypeShape EntityType="TestAspModel.Menu_Category" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="TestAspModel.Menu_Items" Width="1.5" PointX="0.75" PointY="13.125" />
+        <EntityTypeShape EntityType="TestAspModel.Menu_Items_in_category" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="TestAspModel.Menu_Roles" Width="1.5" PointX="3" PointY="6.125" />
+        <EntityTypeShape EntityType="TestAspModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TestAspModel.Test" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="TestAspModel.TestToUser" Width="1.5" PointX="5.25" PointY="7.75" />
+        <EntityTypeShape EntityType="TestAspModel.User" Width="1.5" PointX="10" PointY="8" />
+        <EntityTypeShape EntityType="TestAspModel.Help_Roles" Width="1.5" PointX="8.75" PointY="3.75" />
+        <AssociationConnector Association="TestAspModel.FK_Accounts_Roles_Accounts" />
+        <AssociationConnector Association="TestAspModel.FK_Accounts_Users_Accounts" />
+        <AssociationConnector Association="TestAspModel.FK_Accounts_Roles_Accounts_RolesHB" />
+        <AssociationConnector Association="TestAspModel.FK_Menu_Roles_Accounts_RolesHB" />
+        <AssociationConnector Association="TestAspModel.FK_Accounts_Users_AspNetUsers" />
+        <AssociationConnector Association="TestAspModel.FK_Menu_Roles_AspNetRoles" />
+        <AssociationConnector Association="TestAspModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="TestAspModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="TestAspModel.FK_TestToUser_AspNetUsers" />
+        <AssociationConnector Association="TestAspModel.FK_User_Dolgnost" />
+        <AssociationConnector Association="TestAspModel.FK_Menu_Items_in_category_Menu_Category" />
+        <AssociationConnector Association="TestAspModel.FK_Menu_Roles_Menu_Category" />
+        <AssociationConnector Association="TestAspModel.FK_Menu_Items_in_category_Menu_Items" />
+        <AssociationConnector Association="TestAspModel.FK_Menu_Roles_Menu_Items" />
+        <AssociationConnector Association="TestAspModel.FK_TestToUser_Test" />
+        <AssociationConnector Association="TestAspModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

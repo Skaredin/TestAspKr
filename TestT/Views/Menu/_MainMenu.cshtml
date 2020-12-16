@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNet.Identity
+@using TestT.Models
+@model TestT.Models.menuMain
+@{
+    Dictionary<int, string> menuProjects = Model.menuProject;
+
+    TestAspEntities1 db = new TestAspEntities1();
+
+    var userId = User.Identity.GetUserId();
+    var accountId = db.Accounts_Users.Where(c => c.userId.Equals(userId)).OrderBy(c => c.id).FirstOrDefault().accountId;
+
+    if (Session["CurrentAccount"] != null)
+    {
+        accountId = (int)Session["CurrentAccount"];
+    }
+
+    //db.Accounts.Where(c=>c.Id==accountId).FirstOrDefault().
+    var roles = db.Accounts_Roles.Where(c => c.Account == accountId).Select(c => c.Role).ToList();
+    var currentUserRoles = db.AspNetRoles.FirstOrDefault(aspRole => aspRole.AspNetUsers.FirstOrDefault(user => user.Id == userId).Id == userId);
+
+    var menuRole = db.Menu_Roles.Where(currentRole => roles.Contains(currentRole.Accounts_RoleId) && currentRole.RoleId == currentUserRoles.Id).AsEnumerable().ToList(); /*&& menuUserRoles.Equals(currentRole.AspNetRole.Name)).ToList();*//*&& User.IsInRole(currentRole.AspNetRole.Name)).AsEnumerable().ToList();*//*/ /*&& roles.Contains(Convert.ToInt32(currentRole.AspNetRole.Id))); */
+    var menuCategory = menuRole.Where(m => m.Id_categories != null).OrderBy(x => x.Menu_Category.position);
+    //var menuItem = menuRole.Where(m => m.Id_item != null);
+    var menuCatItem = db.Menu_Items_in_category.Where(x => x.id != null).OrderBy(i => i.Menu_Items.position);
+
+    <ul class="nav navbar-nav">
+        @foreach (var menu in menuCategory.Where(x => x.RoleId == x.AspNetRole.Id))
+        {
+            <li class="dropdown dp">
+                <a href="@menu.Menu_Category.url" class="dropdown-toggle" data-toggle="dropdown">@menu.Menu_Category.name</a>
+                <ul class="dropdown-menu">
+                    @foreach (var items in menuCatItem.Where(x => x.Id_categories == menu.Menu_Category.id && x.id_item == x.Menu_Items.id))
+                    {
+                        if (items != null)
+                        {
+                            <li>
+                                <a href='@items.Menu_Items.url'>@items.Menu_Items.name</a>
+                            </li>
+                        }
+                    }
+                    <li><a><i class="fa fa-plus"></i></a></li>
+                </ul>
+            </li>
+        }
+    </ul>
+}
+
+<script>
+    function handleSearch() {
+        var searchQuery, searchList, searchValue;
+        searchQuery = document.getElementById('searchQuery').value.toLowerCase();
+        searchList = document.getElementById('searchList').getElementsByTagName('li');
+
+        for (var i = 1; i < searchList.length; i++) {
+            searchValue = searchList[i].getElementsByTagName("a")[0].innerHTML.toLowerCase();
+            if (searchValue.indexOf(searchQuery) > -1) {
+                searchList[i].classList.remove('hidden');
+            } else {
+                searchList[i].classList.add('hidden');
+            }
+        }
+    }
+</script>

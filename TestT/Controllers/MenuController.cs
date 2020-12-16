@@ -1,42 +1,32 @@
-﻿using System.Net;
-using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using System.Threading.Tasks;
-using TestT.Models;
-using System;
-
 namespace TestT.Controllers
 {
-    //private TestAspEntities db = new TestAspEntities();
-   
-  
-    
-    public class TestController : Controller
+    public class MenuController : Controller
     {
-        
-        // GET: Test
+        // GET: Menu
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Test/Details/5
+        // GET: Menu/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Test/Create
+        // GET: Menu/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Test/Create
+        // POST: Menu/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -52,13 +42,13 @@ namespace TestT.Controllers
             }
         }
 
-        // GET: Test/Edit/5
+        // GET: Menu/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Test/Edit/5
+        // POST: Menu/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -74,13 +64,13 @@ namespace TestT.Controllers
             }
         }
 
-        // GET: Test/Delete/5
+        // GET: Menu/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Test/Delete/5
+        // POST: Menu/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -95,27 +85,20 @@ namespace TestT.Controllers
                 return View();
             }
         }
-        //public ActionResult Loader()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult Loader(Test tblimage)
-        //{
-        //    string name = Path.GetFileNameWithoutExtension(tblimage.ImageFile.FileName);
-        //    string Kartinka = Path.GetExtension(tblimage.ImageFile.FileName);
-        //    tblimage.Kartinka = "TestKartinki/" + name;
-        //    name = Path.Combine(Server.MapPath("TestKartinki/"), name);
-        //    tblimage.ImageFile.SaveAs(name);
-        //    using (DBmodel dBmodel = new DBmodel())
-        //    {
-        //        dBmodel.Test.Add(tblimage);
-        //        dBmodel.SaveChanges();
-        //    }
-        //    ModelState.Clear();
-        //    return View();
-        //}
 
+        // GET: Menu/Delete/5
+        public ActionResult _MainMenu(int id)
+        {
+            return View();
+        }
 
+        // POST: Menu/Delete/5
+        [HttpPost]
+        public ActionResult _MainMenu(int id, FormCollection collection)
+        {
+            return View();
+
+        }
+      
     }
 }

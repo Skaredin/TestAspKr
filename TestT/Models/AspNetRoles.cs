@@ -7,30 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestT
+namespace TestT.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class AspNetRoles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public AspNetRoles()
         {
-            this.TestToUser = new HashSet<TestToUser>();
+            this.Menu_Roles = new HashSet<Menu_Roles>();
+            this.AspNetUsers = new HashSet<AspNetUsers>();
         }
     
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Otcestvo { get; set; }
-        public int Dolgnost { get; set; }
-        public string Kurs { get; set; }
-        public string Passvord { get; set; }
-        public string Login { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
-        public virtual Dolgnost Dolgnost1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TestToUser> TestToUser { get; set; }
+        public virtual ICollection<Menu_Roles> Menu_Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
     }
 }

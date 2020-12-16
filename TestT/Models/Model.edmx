@@ -1,0 +1,1317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище TestAspModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShortLegalName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="FullLegalName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="INN" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="DirectorFullName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Site" Type="nvarchar(max)" />
+          <Property Name="Industry" Type="int" />
+          <Property Name="Actual_Street" Type="nvarchar" MaxLength="200" />
+          <Property Name="Legal_Street" Type="nvarchar" MaxLength="200" />
+          <Property Name="Bank_Bic" Type="nchar" MaxLength="9" />
+          <Property Name="Bank_Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Bank_Account" Type="nchar" MaxLength="20" />
+          <Property Name="Bank_Korrespondent" Type="nchar" MaxLength="20" />
+          <Property Name="KPP" Type="nvarchar" MaxLength="20" />
+          <Property Name="ClientGuid" Type="uniqueidentifier" />
+          <Property Name="NumberContract" Type="nvarchar(max)" />
+          <Property Name="DateContract" Type="datetime" />
+          <Property Name="Guid" Type="uniqueidentifier" />
+          <Property Name="Ogrn" Type="nvarchar" MaxLength="15" />
+          <Property Name="PostDirector" Type="nvarchar" MaxLength="128" />
+          <Property Name="PostContact" Type="nvarchar" MaxLength="128" />
+          <Property Name="Document" Type="nvarchar" MaxLength="128" />
+          <Property Name="Interaction" Type="nvarchar" MaxLength="128" />
+          <Property Name="dateadd" Type="datetime" />
+          <Property Name="NDS_YES" Type="bit" />
+          <Property Name="NDS_NO" Type="bit" />
+          <Property Name="ZAKUPKI_YES" Type="bit" />
+          <Property Name="ZAKUPKI_NO" Type="bit" />
+          <Property Name="SKLAD_ADDRESS" Type="nvarchar" MaxLength="1000" />
+          <Property Name="KPTextBlock" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Accounts_Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Account" Type="bigint" Nullable="false" />
+          <Property Name="Role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Accounts_RolesHB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Accounts_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="accountId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dolgnost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "TestAsp.dbo.Help_Roles" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Help_Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id_categories" Type="int" />
+          <Property Name="Id_content" Type="int" />
+          <Property Name="Accounts_RoleId" Type="int" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Menu_Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="url" Type="nvarchar(max)" />
+          <Property Name="position" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu_Items">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="url" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="position" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu_Items_in_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id_categories" Type="int" />
+          <Property Name="id_item" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu_Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id_categories" Type="int" />
+          <Property Name="Id_item" Type="int" />
+          <Property Name="Accounts_RoleId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Kartinka" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TestToUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTest" Type="int" />
+          <Property Name="IdAspNetUsers" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndingDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Otcestvo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Dolgnost" Type="int" Nullable="false" />
+          <Property Name="Kurs" Type="nvarchar" MaxLength="50" />
+          <Property Name="Passvord" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Accounts_Roles_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Accounts_Roles" Type="Self.Accounts_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts_Roles">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_Roles_Accounts_RolesHB">
+          <End Role="Accounts_RolesHB" Type="Self.Accounts_RolesHB" Multiplicity="1" />
+          <End Role="Accounts_Roles" Type="Self.Accounts_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts_RolesHB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts_Roles">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_Users_Accounts">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Accounts_Users" Type="Self.Accounts_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts_Users">
+              <PropertyRef Name="accountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_Users_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Accounts_Users" Type="Self.Accounts_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts_Users">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Items_in_category_Menu_Category">
+          <End Role="Menu_Category" Type="Self.Menu_Category" Multiplicity="0..1" />
+          <End Role="Menu_Items_in_category" Type="Self.Menu_Items_in_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Menu_Items_in_category">
+              <PropertyRef Name="Id_categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Items_in_category_Menu_Items">
+          <End Role="Menu_Items" Type="Self.Menu_Items" Multiplicity="1" />
+          <End Role="Menu_Items_in_category" Type="Self.Menu_Items_in_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Items">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Menu_Items_in_category">
+              <PropertyRef Name="id_item" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Roles_Accounts_RolesHB">
+          <End Role="Accounts_RolesHB" Type="Self.Accounts_RolesHB" Multiplicity="1" />
+          <End Role="Menu_Roles" Type="Self.Menu_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts_RolesHB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu_Roles">
+              <PropertyRef Name="Accounts_RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Roles_AspNetRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+          <End Role="Menu_Roles" Type="Self.Menu_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu_Roles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Roles_Menu_Category">
+          <End Role="Menu_Category" Type="Self.Menu_Category" Multiplicity="0..1" />
+          <End Role="Menu_Roles" Type="Self.Menu_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Menu_Roles">
+              <PropertyRef Name="Id_categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Roles_Menu_Items">
+          <End Role="Menu_Items" Type="Self.Menu_Items" Multiplicity="0..1" />
+          <End Role="Menu_Roles" Type="Self.Menu_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Items">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Menu_Roles">
+              <PropertyRef Name="Id_item" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestToUser_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="TestToUser" Type="Self.TestToUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestToUser">
+              <PropertyRef Name="IdAspNetUsers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestToUser_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="TestToUser" Type="Self.TestToUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestToUser">
+              <PropertyRef Name="IdTest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Dolgnost">
+          <End Role="Dolgnost" Type="Self.Dolgnost" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolgnost">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Dolgnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище TestAspModelContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accounts_Roles" EntityType="Self.Accounts_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accounts_RolesHB" EntityType="Self.Accounts_RolesHB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accounts_Users" EntityType="Self.Accounts_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dolgnost" EntityType="Self.Dolgnost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu_Category" EntityType="Self.Menu_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu_Items" EntityType="Self.Menu_Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu_Items_in_category" EntityType="Self.Menu_Items_in_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu_Roles" EntityType="Self.Menu_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestToUser" EntityType="Self.TestToUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Help_Roles" EntityType="Self.Help_Roles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Help_Roles].[id] AS [id], 
+    [Help_Roles].[Id_categories] AS [Id_categories], 
+    [Help_Roles].[Id_content] AS [Id_content], 
+    [Help_Roles].[Accounts_RoleId] AS [Accounts_RoleId], 
+    [Help_Roles].[RoleId] AS [RoleId]
+    FROM [dbo].[Help_Roles] AS [Help_Roles]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Accounts_Roles_Accounts" Association="Self.FK_Accounts_Roles_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Accounts_Roles" EntitySet="Accounts_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_Roles_Accounts_RolesHB" Association="Self.FK_Accounts_Roles_Accounts_RolesHB">
+            <End Role="Accounts_RolesHB" EntitySet="Accounts_RolesHB" />
+            <End Role="Accounts_Roles" EntitySet="Accounts_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_Users_Accounts" Association="Self.FK_Accounts_Users_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Accounts_Users" EntitySet="Accounts_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_Users_AspNetUsers" Association="Self.FK_Accounts_Users_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Accounts_Users" EntitySet="Accounts_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Items_in_category_Menu_Category" Association="Self.FK_Menu_Items_in_category_Menu_Category">
+            <End Role="Menu_Category" EntitySet="Menu_Category" />
+            <End Role="Menu_Items_in_category" EntitySet="Menu_Items_in_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Items_in_category_Menu_Items" Association="Self.FK_Menu_Items_in_category_Menu_Items">
+            <End Role="Menu_Items" EntitySet="Menu_Items" />
+            <End Role="Menu_Items_in_category" EntitySet="Menu_Items_in_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Roles_Accounts_RolesHB" Association="Self.FK_Menu_Roles_Accounts_RolesHB">
+            <End Role="Accounts_RolesHB" EntitySet="Accounts_RolesHB" />
+            <End Role="Menu_Roles" EntitySet="Menu_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Roles_AspNetRoles" Association="Self.FK_Menu_Roles_AspNetRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="Menu_Roles" EntitySet="Menu_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Roles_Menu_Category" Association="Self.FK_Menu_Roles_Menu_Category">
+            <End Role="Menu_Category" EntitySet="Menu_Category" />
+            <End Role="Menu_Roles" EntitySet="Menu_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Roles_Menu_Items" Association="Self.FK_Menu_Roles_Menu_Items">
+            <End Role="Menu_Items" EntitySet="Menu_Items" />
+            <End Role="Menu_Roles" EntitySet="Menu_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestToUser_AspNetUsers" Association="Self.FK_TestToUser_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="TestToUser" EntitySet="TestToUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestToUser_Test" Association="Self.FK_TestToUser_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="TestToUser" EntitySet="TestToUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Dolgnost" Association="Self.FK_User_Dolgnost">
+            <End Role="Dolgnost" EntitySet="Dolgnost" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestAspModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TestAspEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="TestAspModel.C__MigrationHistory" />
+          <EntitySet Name="Accounts" EntityType="TestAspModel.Accounts" />
+          <EntitySet Name="Accounts_Roles" EntityType="TestAspModel.Accounts_Roles" />
+          <EntitySet Name="Accounts_RolesHB" EntityType="TestAspModel.Accounts_RolesHB" />
+          <EntitySet Name="Accounts_Users" EntityType="TestAspModel.Accounts_Users" />
+          <EntitySet Name="AspNetRoles" EntityType="TestAspModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="TestAspModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="TestAspModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="TestAspModel.AspNetUsers" />
+          <EntitySet Name="Dolgnost" EntityType="TestAspModel.Dolgnost" />
+          <EntitySet Name="Menu_Category" EntityType="TestAspModel.Menu_Category" />
+          <EntitySet Name="Menu_Items" EntityType="TestAspModel.Menu_Items" />
+          <EntitySet Name="Menu_Items_in_category" EntityType="TestAspModel.Menu_Items_in_category" />
+          <EntitySet Name="Menu_Roles" EntityType="TestAspModel.Menu_Roles" />
+          <EntitySet Name="sysdiagrams" EntityType="TestAspModel.sysdiagrams" />
+          <EntitySet Name="Test" EntityType="TestAspModel.Test" />
+          <EntitySet Name="TestToUser" EntityType="TestAspModel.TestToUser" />
+          <EntitySet Name="User" EntityType="TestAspModel.User" />
+          <EntitySet Name="Help_Roles" EntityType="TestAspModel.Help_Roles" />
+          <AssociationSet Name="FK_Accounts_Roles_Accounts" Association="TestAspModel.FK_Accounts_Roles_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Accounts_Roles" EntitySet="Accounts_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_Users_Accounts" Association="TestAspModel.FK_Accounts_Users_Accounts">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Accounts_Users" EntitySet="Accounts_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_Roles_Accounts_RolesHB" Association="TestAspModel.FK_Accounts_Roles_Accounts_RolesHB">
+            <End Role="Accounts_RolesHB" EntitySet="Accounts_RolesHB" />
+            <End Role="Accounts_Roles" EntitySet="Accounts_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Roles_Accounts_RolesHB" Association="TestAspModel.FK_Menu_Roles_Accounts_RolesHB">
+            <End Role="Accounts_RolesHB" EntitySet="Accounts_RolesHB" />
+            <End Role="Menu_Roles" EntitySet="Menu_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_Users_AspNetUsers" Association="TestAspModel.FK_Accounts_Users_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Accounts_Users" EntitySet="Accounts_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Roles_AspNetRoles" Association="TestAspModel.FK_Menu_Roles_AspNetRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="Menu_Roles" EntitySet="Menu_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="TestAspModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="TestAspModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestToUser_AspNetUsers" Association="TestAspModel.FK_TestToUser_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="TestToUser" EntitySet="TestToUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Dolgnost" Association="TestAspModel.FK_User_Dolgnost">
+            <End Role="Dolgnost" EntitySet="Dolgnost" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Items_in_category_Menu_Category" Association="TestAspModel.FK_Menu_Items_in_category_Menu_Category">
+            <End Role="Menu_Category" EntitySet="Menu_Category" />
+            <End Role="Menu_Items_in_category" EntitySet="Menu_Items_in_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Roles_Menu_Category" Association="TestAspModel.FK_Menu_Roles_Menu_Category">
+            <End Role="Menu_Category" EntitySet="Menu_Category" />
+            <End Role="Menu_Roles" EntitySet="Menu_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Items_in_category_Menu_Items" Association="TestAspModel.FK_Menu_Items_in_category_Menu_Items">
+            <End Role="Menu_Items" EntitySet="Menu_Items" />
+            <End Role="Menu_Items_in_category" EntitySet="Menu_Items_in_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Roles_Menu_Items" Association="TestAspModel.FK_Menu_Roles_Menu_Items">
+            <End Role="Menu_Items" EntitySet="Menu_Items" />
+            <End Role="Menu_Roles" EntitySet="Menu_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestToUser_Test" Association="TestAspModel.FK_TestToUser_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="TestToUser" EntitySet="TestToUser" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="TestAspModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShortLegalName" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="FullLegalName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INN" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="DirectorFullName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Site" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Industry" Type="Int32" />
+          <Property Name="Actual_Street" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Legal_Street" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Bank_Bic" Type="String" MaxLength="9" FixedLength="true" Unicode="true" />
+          <Property Name="Bank_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Bank_Account" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Bank_Korrespondent" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="KPP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ClientGuid" Type="Guid" />
+          <Property Name="NumberContract" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateContract" Type="DateTime" Precision="3" />
+          <Property Name="Guid" Type="Guid" />
+          <Property Name="Ogrn" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PostDirector" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PostContact" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Document" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Interaction" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="dateadd" Type="DateTime" Precision="3" />
+          <Property Name="NDS_YES" Type="Boolean" />
+          <Property Name="NDS_NO" Type="Boolean" />
+          <Property Name="ZAKUPKI_YES" Type="Boolean" />
+          <Property Name="ZAKUPKI_NO" Type="Boolean" />
+          <Property Name="SKLAD_ADDRESS" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="KPTextBlock" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts_Roles" Relationship="TestAspModel.FK_Accounts_Roles_Accounts" FromRole="Accounts" ToRole="Accounts_Roles" />
+          <NavigationProperty Name="Accounts_Users" Relationship="TestAspModel.FK_Accounts_Users_Accounts" FromRole="Accounts" ToRole="Accounts_Users" />
+        </EntityType>
+        <EntityType Name="Accounts_Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Account" Type="Int64" Nullable="false" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="TestAspModel.FK_Accounts_Roles_Accounts" FromRole="Accounts_Roles" ToRole="Accounts" />
+          <NavigationProperty Name="Accounts_RolesHB" Relationship="TestAspModel.FK_Accounts_Roles_Accounts_RolesHB" FromRole="Accounts_Roles" ToRole="Accounts_RolesHB" />
+        </EntityType>
+        <EntityType Name="Accounts_RolesHB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts_Roles" Relationship="TestAspModel.FK_Accounts_Roles_Accounts_RolesHB" FromRole="Accounts_RolesHB" ToRole="Accounts_Roles" />
+          <NavigationProperty Name="Menu_Roles" Relationship="TestAspModel.FK_Menu_Roles_Accounts_RolesHB" FromRole="Accounts_RolesHB" ToRole="Menu_Roles" />
+        </EntityType>
+        <EntityType Name="Accounts_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="accountId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="TestAspModel.FK_Accounts_Users_Accounts" FromRole="Accounts_Users" ToRole="Accounts" />
+          <NavigationProperty Name="AspNetUsers" Relationship="TestAspModel.FK_Accounts_Users_AspNetUsers" FromRole="Accounts_Users" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menu_Roles" Relationship="TestAspModel.FK_Menu_Roles_AspNetRoles" FromRole="AspNetRoles" ToRole="Menu_Roles" />
+          <NavigationProperty Name="AspNetUsers" Relationship="TestAspModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="TestAspModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="TestAspModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts_Users" Relationship="TestAspModel.FK_Accounts_Users_AspNetUsers" FromRole="AspNetUsers" ToRole="Accounts_Users" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="TestAspModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="TestAspModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="TestToUser" Relationship="TestAspModel.FK_TestToUser_AspNetUsers" FromRole="AspNetUsers" ToRole="TestToUser" />
+          <NavigationProperty Name="AspNetRoles" Relationship="TestAspModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Dolgnost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opisanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="TestAspModel.FK_User_Dolgnost" FromRole="Dolgnost" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Menu_Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="position" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Menu_Items_in_category" Relationship="TestAspModel.FK_Menu_Items_in_category_Menu_Category" FromRole="Menu_Category" ToRole="Menu_Items_in_category" />
+          <NavigationProperty Name="Menu_Roles" Relationship="TestAspModel.FK_Menu_Roles_Menu_Category" FromRole="Menu_Category" ToRole="Menu_Roles" />
+        </EntityType>
+        <EntityType Name="Menu_Items">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="position" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Menu_Items_in_category" Relationship="TestAspModel.FK_Menu_Items_in_category_Menu_Items" FromRole="Menu_Items" ToRole="Menu_Items_in_category" />
+          <NavigationProperty Name="Menu_Roles" Relationship="TestAspModel.FK_Menu_Roles_Menu_Items" FromRole="Menu_Items" ToRole="Menu_Roles" />
+        </EntityType>
+        <EntityType Name="Menu_Items_in_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Id_categories" Type="Int32" />
+          <Property Name="id_item" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Menu_Category" Relationship="TestAspModel.FK_Menu_Items_in_category_Menu_Category" FromRole="Menu_Items_in_category" ToRole="Menu_Category" />
+          <NavigationProperty Name="Menu_Items" Relationship="TestAspModel.FK_Menu_Items_in_category_Menu_Items" FromRole="Menu_Items_in_category" ToRole="Menu_Items" />
+        </EntityType>
+        <EntityType Name="Menu_Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Id_categories" Type="Int32" />
+          <Property Name="Id_item" Type="Int32" />
+          <Property Name="Accounts_RoleId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts_RolesHB" Relationship="TestAspModel.FK_Menu_Roles_Accounts_RolesHB" FromRole="Menu_Roles" ToRole="Accounts_RolesHB" />
+          <NavigationProperty Name="AspNetRoles" Relationship="TestAspModel.FK_Menu_Roles_AspNetRoles" FromRole="Menu_Roles" ToRole="AspNetRoles" />
+          <NavigationProperty Name="Menu_Category" Relationship="TestAspModel.FK_Menu_Roles_Menu_Category" FromRole="Menu_Roles" ToRole="Menu_Category" />
+          <NavigationProperty Name="Menu_Items" Relationship="TestAspModel.FK_Menu_Roles_Menu_Items" FromRole="Menu_Roles" ToRole="Menu_Items" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Kartinka" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TestToUser" Relationship="TestAspModel.FK_TestToUser_Test" FromRole="Test" ToRole="TestToUser" />
+        </EntityType>
+        <EntityType Name="TestToUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTest" Type="Int32" />
+          <Property Name="IdAspNetUsers" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndingDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUsers" Relationship="TestAspModel.FK_TestToUser_AspNetUsers" FromRole="TestToUser" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Test" Relationship="TestAspModel.FK_TestToUser_Test" FromRole="TestToUser" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Otcestvo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dolgnost" Type="Int32" Nullable="false" />
+          <Property Name="Kurs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Passvord" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dolgnost1" Relationship="TestAspModel.FK_User_Dolgnost" FromRole="User" ToRole="Dolgnost" />
+        </EntityType>
+        <EntityType Name="Help_Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Id_categories" Type="Int32" />
+          <Property Name="Id_content" Type="Int32" />
+          <Property Name="Accounts_RoleId" Type="Int32" />
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Accounts_Roles_Accounts">
+          <End Type="TestAspModel.Accounts" Role="Accounts" Multiplicity="1" />
+          <End Type="TestAspModel.Accounts_Roles" Role="Accounts_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts_Roles">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_Users_Accounts">
+          <End Type="TestAspModel.Accounts" Role="Accounts" Multiplicity="1" />
+          <End Type="TestAspModel.Accounts_Users" Role="Accounts_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts_Users">
+              <PropertyRef Name="accountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_Roles_Accounts_RolesHB">
+          <End Type="TestAspModel.Accounts_RolesHB" Role="Accounts_RolesHB" Multiplicity="1" />
+          <End Type="TestAspModel.Accounts_Roles" Role="Accounts_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts_RolesHB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts_Roles">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Roles_Accounts_RolesHB">
+          <End Type="TestAspModel.Accounts_RolesHB" Role="Accounts_RolesHB" Multiplicity="1" />
+          <End Type="TestAspModel.Menu_Roles" Role="Menu_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts_RolesHB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu_Roles">
+              <PropertyRef Name="Accounts_RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_Users_AspNetUsers">
+          <End Type="TestAspModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="TestAspModel.Accounts_Users" Role="Accounts_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts_Users">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Roles_AspNetRoles">
+          <End Type="TestAspModel.AspNetRoles" Role="AspNetRoles" Multiplicity="1" />
+          <End Type="TestAspModel.Menu_Roles" Role="Menu_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu_Roles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="TestAspModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TestAspModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="TestAspModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TestAspModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestToUser_AspNetUsers">
+          <End Type="TestAspModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="TestAspModel.TestToUser" Role="TestToUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestToUser">
+              <PropertyRef Name="IdAspNetUsers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Dolgnost">
+          <End Type="TestAspModel.Dolgnost" Role="Dolgnost" Multiplicity="1" />
+          <End Type="TestAspModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolgnost">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Dolgnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Items_in_category_Menu_Category">
+          <End Type="TestAspModel.Menu_Category" Role="Menu_Category" Multiplicity="0..1" />
+          <End Type="TestAspModel.Menu_Items_in_category" Role="Menu_Items_in_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Menu_Items_in_category">
+              <PropertyRef Name="Id_categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Roles_Menu_Category">
+          <End Type="TestAspModel.Menu_Category" Role="Menu_Category" Multiplicity="0..1" />
+          <End Type="TestAspModel.Menu_Roles" Role="Menu_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Menu_Roles">
+              <PropertyRef Name="Id_categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Items_in_category_Menu_Items">
+          <End Type="TestAspModel.Menu_Items" Role="Menu_Items" Multiplicity="1" />
+          <End Type="TestAspModel.Menu_Items_in_category" Role="Menu_Items_in_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Items">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Menu_Items_in_category">
+              <PropertyRef Name="id_item" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Roles_Menu_Items">
+          <End Type="TestAspModel.Menu_Items" Role="Menu_Items" Multiplicity="0..1" />
+          <End Type="TestAspModel.Menu_Roles" Role="Menu_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Items">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Menu_Roles">
+              <PropertyRef Name="Id_item" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestToUser_Test">
+          <End Type="TestAspModel.Test" Role="Test" Multiplicity="0..1" />
+          <End Type="TestAspModel.TestToUser" Role="TestToUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestToUser">
+              <PropertyRef Name="IdTest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="TestAspModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="TestAspModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TestAspModelContainer" CdmEntityContainer="TestAspEntities1">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="TestAspModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="TestAspModel.Accounts">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="KPTextBlock" ColumnName="KPTextBlock" />
+                <ScalarProperty Name="SKLAD_ADDRESS" ColumnName="SKLAD_ADDRESS" />
+                <ScalarProperty Name="ZAKUPKI_NO" ColumnName="ZAKUPKI_NO" />
+                <ScalarProperty Name="ZAKUPKI_YES" ColumnName="ZAKUPKI_YES" />
+                <ScalarProperty Name="NDS_NO" ColumnName="NDS_NO" />
+                <ScalarProperty Name="NDS_YES" ColumnName="NDS_YES" />
+                <ScalarProperty Name="dateadd" ColumnName="dateadd" />
+                <ScalarProperty Name="Interaction" ColumnName="Interaction" />
+                <ScalarProperty Name="Document" ColumnName="Document" />
+                <ScalarProperty Name="PostContact" ColumnName="PostContact" />
+                <ScalarProperty Name="PostDirector" ColumnName="PostDirector" />
+                <ScalarProperty Name="Ogrn" ColumnName="Ogrn" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="DateContract" ColumnName="DateContract" />
+                <ScalarProperty Name="NumberContract" ColumnName="NumberContract" />
+                <ScalarProperty Name="ClientGuid" ColumnName="ClientGuid" />
+                <ScalarProperty Name="KPP" ColumnName="KPP" />
+                <ScalarProperty Name="Bank_Korrespondent" ColumnName="Bank_Korrespondent" />
+                <ScalarProperty Name="Bank_Account" ColumnName="Bank_Account" />
+                <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
+                <ScalarProperty Name="Bank_Bic" ColumnName="Bank_Bic" />
+                <ScalarProperty Name="Legal_Street" ColumnName="Legal_Street" />
+                <ScalarProperty Name="Actual_Street" ColumnName="Actual_Street" />
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="DirectorFullName" ColumnName="DirectorFullName" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="FullLegalName" ColumnName="FullLegalName" />
+                <ScalarProperty Name="ShortLegalName" ColumnName="ShortLegalName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts_Roles">
+            <EntityTypeMapping TypeName="TestAspModel.Accounts_Roles">
+              <MappingFragment StoreEntitySet="Accounts_Roles">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts_RolesHB">
+            <EntityTypeMapping TypeName="TestAspModel.Accounts_RolesHB">
+              <MappingFragment StoreEntitySet="Accounts_RolesHB">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts_Users">
+            <EntityTypeMapping TypeName="TestAspModel.Accounts_Users">
+              <MappingFragment StoreEntitySet="Accounts_Users">
+                <ScalarProperty Name="accountId" ColumnName="accountId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="TestAspModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="TestAspModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="TestAspModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="TestAspModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dolgnost">
+            <EntityTypeMapping TypeName="TestAspModel.Dolgnost">
+              <MappingFragment StoreEntitySet="Dolgnost">
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu_Category">
+            <EntityTypeMapping TypeName="TestAspModel.Menu_Category">
+              <MappingFragment StoreEntitySet="Menu_Category">
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu_Items">
+            <EntityTypeMapping TypeName="TestAspModel.Menu_Items">
+              <MappingFragment StoreEntitySet="Menu_Items">
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu_Items_in_category">
+            <EntityTypeMapping TypeName="TestAspModel.Menu_Items_in_category">
+              <MappingFragment StoreEntitySet="Menu_Items_in_category">
+                <ScalarProperty Name="id_item" ColumnName="id_item" />
+                <ScalarProperty Name="Id_categories" ColumnName="Id_categories" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu_Roles">
+            <EntityTypeMapping TypeName="TestAspModel.Menu_Roles">
+              <MappingFragment StoreEntitySet="Menu_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Accounts_RoleId" ColumnName="Accounts_RoleId" />
+                <ScalarProperty Name="Id_item" ColumnName="Id_item" />
+                <ScalarProperty Name="Id_categories" ColumnName="Id_categories" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TestAspModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test">
+            <EntityTypeMapping TypeName="TestAspModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="Kartinka" ColumnName="Kartinka" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestToUser">
+            <EntityTypeMapping TypeName="TestAspModel.TestToUser">
+              <MappingFragment StoreEntitySet="TestToUser">
+                <ScalarProperty Name="EndingDate" ColumnName="EndingDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="IdAspNetUsers" ColumnName="IdAspNetUsers" />
+                <ScalarProperty Name="IdTest" ColumnName="IdTest" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="TestAspModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Passvord" ColumnName="Passvord" />
+                <ScalarProperty Name="Kurs" ColumnName="Kurs" />
+                <ScalarProperty Name="Dolgnost" ColumnName="Dolgnost" />
+                <ScalarProperty Name="Otcestvo" ColumnName="Otcestvo" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Help_Roles">
+            <EntityTypeMapping TypeName="TestAspModel.Help_Roles">
+              <MappingFragment StoreEntitySet="Help_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Accounts_RoleId" ColumnName="Accounts_RoleId" />
+                <ScalarProperty Name="Id_content" ColumnName="Id_content" />
+                <ScalarProperty Name="Id_categories" ColumnName="Id_categories" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="TestAspModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

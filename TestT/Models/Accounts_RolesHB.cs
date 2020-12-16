@@ -7,24 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestT
+namespace TestT.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Dolgnost
+    public partial class Accounts_RolesHB
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Dolgnost()
+        public Accounts_RolesHB()
         {
-            this.User = new HashSet<User>();
+            this.Accounts_Roles = new HashSet<Accounts_Roles>();
+            this.Menu_Roles = new HashSet<Menu_Roles>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Opisanie { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual ICollection<Accounts_Roles> Accounts_Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Menu_Roles> Menu_Roles { get; set; }
     }
 }

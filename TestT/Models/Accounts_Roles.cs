@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestT
+namespace TestT.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TestToUser
+    public partial class Accounts_Roles
     {
         public int Id { get; set; }
-        public Nullable<int> IdTest { get; set; }
-        public Nullable<int> IdUser { get; set; }
+        public long Account { get; set; }
+        public int Role { get; set; }
     
-        public virtual Test Test { get; set; }
-        public virtual User User { get; set; }
+        public virtual Accounts Accounts { get; set; }
+        public virtual Accounts_RolesHB Accounts_RolesHB { get; set; }
     }
 }
