@@ -423,7 +423,6 @@
     <Content Include="TestKartinki - Ярлык.lnk" />
     <Content Include="Views\Test\Edit.cshtml" />
     <Content Include="Views\Test\Loader.cshtml" />
-    <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Menu\_MainMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
